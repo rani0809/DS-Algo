@@ -1,6 +1,6 @@
 # Learning Programming
 
-<details> Problem Solving
+Problem Solving
 <ul>
     <li>Time Complexity</li>
     <li>Arrays</li>
@@ -21,4 +21,4 @@
     <li>Game Theory</li>
     <li>Advanced Concepts</li>
 </ul>
-</details>
+
