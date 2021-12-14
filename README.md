@@ -1,7 +1,6 @@
 # Learning Programming
 
-<details>
-<summary>2. Problem Solving</summary>
+<details> Problem Solving
 <ul>
     <li>Time Complexity</li>
     <li>Arrays</li>
