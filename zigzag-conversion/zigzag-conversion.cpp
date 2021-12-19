@@ -1,33 +1,16 @@
 class Solution {
 public:
-   string convert(string s, int nRows) {
-    
-    if (nRows <= 1)
-        return s;
-
-    const int len = (int)s.length();
-    string *str = new string[nRows];
-
-    int row = 0, step = 1;
-    for (int i = 0; i < len; ++i)
-    {
-        str[row].push_back(s[i]);
-
-        if (row == 0)
-            step = 1;
-        else if (row == nRows - 1)
-            step = -1;
-
-        row += step;
+    string convert(string s, int numRows) {
+        if(numRows <= 1) return s;
+        vector<string> db (numRows, "");
+        for(int i = 0,row = 0,step = 1;i < s.size();i++){
+            db[row] += s[i];
+            if(row == 0) step = 1;
+            if(row == numRows - 1) step = -1;
+            row += step;
+        }
+        string ret;
+        for(auto d:db) ret+=d;
+        return ret;
     }
-
-    s.clear();
-    for (int j = 0; j < nRows; ++j)
-    {
-        s.append(str[j]);
-    }
-
-    delete[] str;
-    return s;
-}
 };
