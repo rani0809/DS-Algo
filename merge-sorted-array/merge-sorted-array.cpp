@@ -1,37 +1,25 @@
 class Solution {
 public:
-     void static merge(vector<int>& nums1, int m, const vector<int>& nums2, int n)
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        int i=m-1,j=n-1,k=m+n-1;
+        while(i>=0&&j>=0)
         {
-            // We will write from the back of the first array to its front,
-            // starting at what will be the last entry in it:
-            unsigned write = n + m - 1;
-            
-            // Make m and n index the last source entry in each of the two input ranges:
-            --m;
-            --n;
-            
-            // Loop right to left over input ranges, at each step choosing the,
-            // greatest of the two inputs to write into the current destination position:
-            while(n >= 0 && m >= 0){
-                const int num1 = nums1[m];
-                const int num2 = nums2[n];
-                nums1[write] = std::max(num1, num2);
-                if(num1 > num2){
-                    --m;
-                } else {
-                    --n;
-                }
-                --write;
+            if(nums1[i]>nums2[j])
+            {
+                nums1[k]=nums1[i];
+                i--;
+                k--;
             }
-            
-            // Drain the tail from the input range with spare entries:
-            // If the first input is the one with spare, they are already in place
-            // so only actually loop if the spares are in the second input and thus
-            // need copying over.
-            while(n >= 0){
-                nums1[write] = nums2[n];
-                --n;
-                --write;
+            else
+            {
+                nums1[k]=nums2[j];
+                j--;
+                k--;
             }
         }
+        while(i>=0)
+            nums1[k--]=nums1[i--];
+        while(j>=0)
+            nums1[k--]=nums2[j--];
+    }
 };
