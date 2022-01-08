@@ -4,34 +4,30 @@ using namespace std;
 
  // } Driver Code Ends
 //User function template for C++
-class Solution{
+class Solution {
 public:
-	void merge(int arr1[], int arr2[], int n, int m){
-  
-    int i = n-1,j = 0;
-    
-    while(i >= 0 && j < m)
-    {
-        if(arr1[i]>arr2[j])
-        {
-            int temp=arr1[i];
-            arr1[i]=arr2[j];
-            arr2[j]=temp;
-            i--;
-            j++;
-        }
-        else
-        {
-            break;
-        }
-        
+    void merge(int arr1[], int arr2[], int n, int m ){
+      vector<int>s;
+    int i,j,k=0;
+    for(i=0;i<n;i++){
+     s.push_back(arr1[i]);
     }
     
-    sort(arr1,arr1+n);
-    sort(arr2,arr2+m);
+for(i=0;i<m;i++){
+       s.push_back(arr2[i]);
+    }
+    sort(s.begin(),s.end());
+    k=0;
+    for(i=0;i<n;i++){
+        arr1[i]=s[k];
+    k++;
+    }
+    for(i=0;i<m;i++){
+        arr2[i]=s[k];
+        k++;
+    }
 }
-};
-
+    };
 // { Driver Code Starts.
 int main() {
     int t;
