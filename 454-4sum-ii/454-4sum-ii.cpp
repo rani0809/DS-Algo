@@ -1,21 +1,14 @@
 class Solution {
 public:
-    int fourSumCount(vector<int>& A, vector<int>& B, vector<int>& C, vector<int>& D) {
-        unordered_map<int, int>  abSum;
-        for(auto a : A) {
-            for(auto b : B) {
-                ++abSum[a+b];
-            }
-        }
+    int fourSumCount(vector<int>& nums1, vector<int>& nums2, vector<int>& nums3, vector<int>& nums4) {
+        map<int,int> mp;
+        for(int k : nums3)
+            for(int l : nums4)
+                mp[k + l]++;
         int count = 0;
-        for(auto c : C) {
-            for(auto d : D) {
-                auto it = abSum.find(0 - c - d);
-                if(it != abSum.end()) {
-                    count += it->second;
-                }
-            }
-        }
+        for(int i : nums1)
+            for(int j : nums2)
+                        count += mp[-(i + j)];
         return count;
     }
 };
